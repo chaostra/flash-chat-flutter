@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
+import '../components/rounded_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -9,6 +12,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 48.0,
             ),
             TextField(
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
               decoration: kFieldDecoration.copyWith(hintText: 'Enter your email'),
             ),
@@ -39,31 +47,32 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 8.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
+              obscureText: true,
               onChanged: (value) {
-                //Do something with the user input.
+                password = value;
               },
               decoration: kFieldDecoration.copyWith(hintText: 'Enter your password'),
             ),
             SizedBox(
               height: 24.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Implement login functionality.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            RoundedButton(
+              title: 'Log In',
+              color: Colors.lightBlueAccent,
+              onPressed: () async{
+                try {
+                  final newUser = await _auth.signInWithEmailAndPassword(
+                      email: email, password: password);
+                  if (newUser != null){
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                }
+                catch (e){
+                  print(e);
+                }
+              },
             ),
           ],
         ),
