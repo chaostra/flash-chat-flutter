@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "713357962499",
+    "project_id": "flashchat-85fb8",
+    "storage_bucket": "flashchat-85fb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713357962499:android:1c5146406e627327ac8d36",
+        "android_client_info": {
+          "package_name": "com.alilpup.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713357962499-ttmo06ah3fo4ni18fepploa38nogmlit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlPGhxtce9A2OB23peYONZJ_G6-4Hwk6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713357962499-ttmo06ah3fo4ni18fepploa38nogmlit.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "713357962499-7rf83holvqu2r4psdjbo4c1frkqkh5fc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "testes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
